@@ -1,6 +1,5 @@
-
-
-
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Questa classe modella una partita del gioco
