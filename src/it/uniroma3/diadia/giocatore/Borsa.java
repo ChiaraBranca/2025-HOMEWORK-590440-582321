@@ -52,7 +52,7 @@ public class Borsa {
 		public Attrezzo removeAttrezzo(String nomeAttrezzo) {
 			
 			for(int i=0; i<this.numeroAttrezzi; i++) {
-				if(attrezzi[i].getNome()==nomeAttrezzo) {
+				if(attrezzi[i].getNome().equals(nomeAttrezzo)) {
 					Attrezzo rimosso=this.attrezzi[i];
 			//sposto i puntatori
 					for(int j=1; j<this.numeroAttrezzi - 1;j++) {
@@ -65,7 +65,6 @@ public class Borsa {
 				}
 				
 			}			
-		//---> TODO (implementare questo metodo) <---
 		return null;
 		}
 		public String toString() {

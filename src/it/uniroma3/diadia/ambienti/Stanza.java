@@ -160,8 +160,9 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
+			if(attrezzo != null)
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;	
 	}
@@ -174,7 +175,7 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		// TODO da implementare
 		for(int i=0; i<this.numeroAttrezzi; i++) {
-			if(this.attrezzi[i].getNome()==attrezzo.getNome()) {
+			if(this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
 				for(int j=i; j<this.numeroAttrezzi-1;j++) {
 					this.attrezzi[j]=this.attrezzi[j+1];
 				}
