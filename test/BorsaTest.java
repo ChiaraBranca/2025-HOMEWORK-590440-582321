@@ -12,7 +12,7 @@ public class BorsaTest {
 	Attrezzo a3= new Attrezzo("libro",2);
 	
 	@Test
-	
+//provaprova	
 	public void testAddAttrezzo() {
 		assertTrue(b.addAttrezzo(a1));
 		assertTrue(b.addAttrezzo(a2));
