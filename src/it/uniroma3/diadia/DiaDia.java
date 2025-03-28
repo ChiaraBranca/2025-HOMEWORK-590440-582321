@@ -2,8 +2,9 @@ package it.uniroma3.diadia;
 
 
 import java.util.Scanner;
-
-import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.*;
+import it.uniroma3.diadia.attrezzi.*;
+import it.uniroma3.diadia.ambienti.*;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -29,7 +30,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine","prendi","posa"};
 
 	private Partita partita;
 
@@ -64,6 +65,10 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -92,22 +97,34 @@ public class DiaDia {
 		if(direzione==null)
 			System.out.println("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			this.partita.getLabirinto().setStanzaCorrente(prossimaStanza);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
-	}
+		System.out.println(partita.getLabirinto().getStanzaCorrente().getDescrizione());
+	} 
 
 	/**
 	 * Comando "Fine".
 	 */
 	private void fine() {
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
+	}
+	
+	private void prendi(String nomeAttrezzo) {
+		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		this.partita.getGiocatore().getBorsa().addAttrezzo(a);
+		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+	}
+	
+	private void posa(String nomeAttrezzo) {
+		Attrezzo a=this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
+		this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
 	}
 
 	public static void main(String[] argc) {
