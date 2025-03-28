@@ -106,7 +106,7 @@ public class DiaDia {
 			this.partita.getGiocatore().setCfu(cfu--);
 		}
 		System.out.println(partita.getLabirinto().getStanzaCorrente().getDescrizione());
-	}
+	} 
 
 	/**
 	 * Comando "Fine".
