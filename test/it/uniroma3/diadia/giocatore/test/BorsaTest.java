@@ -1,3 +1,4 @@
+package it.uniroma3.diadia.giocatore.test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -11,8 +12,7 @@ public class BorsaTest {
 	Attrezzo a2= new Attrezzo("quaderno",8);
 	Attrezzo a3= new Attrezzo("libro",2);
 	
-	@Test
-//provaprova	
+	@Test	
 	public void testAddAttrezzo() {
 		assertTrue(b.addAttrezzo(a1));
 		assertTrue(b.addAttrezzo(a2));
