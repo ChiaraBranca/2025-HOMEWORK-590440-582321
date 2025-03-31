@@ -3,8 +3,9 @@ package it.unitoma3.diadia.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+
 
 import it.uniroma3.diadia.Partita;
 
@@ -12,7 +13,7 @@ public class PartitaTest {
 	
 	public Partita partita = new Partita();
 	
-	@BeforeEach
+	@Before
 	public void setUp() {
 		
 	}
