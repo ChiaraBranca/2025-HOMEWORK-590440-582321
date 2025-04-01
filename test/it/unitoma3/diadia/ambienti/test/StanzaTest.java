@@ -62,5 +62,17 @@ public class StanzaTest {
 	public void testRemoveAttrezzo_AttrezzoNonPresente() {
 		assertFalse(stanza.removeAttrezzo(spada));
 	}
+	
+	
+	
+	public void testRemoveAttrezzo() {
+		stanza.addAttrezzo(spada);
+	    
+	    stanza.removeAttrezzo(spada);
+	   
+	    assertFalse(stanza.hasAttrezzo(spada.getNome()));
+		
+	}
+	
 
 }
