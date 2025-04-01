@@ -1,3 +1,4 @@
+package it.uniroma3.diadia.giocatore.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
