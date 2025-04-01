@@ -67,9 +67,7 @@ public class StanzaTest {
 	
 	public void testRemoveAttrezzo() {
 		stanza.addAttrezzo(spada);
-	    
 	    stanza.removeAttrezzo(spada);
-	   
 	    assertFalse(stanza.hasAttrezzo(spada.getNome()));
 		
 	}

@@ -120,12 +120,16 @@ public class DiaDia {
 		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
 		this.partita.getGiocatore().getBorsa().addAttrezzo(a);
 		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+		Io.mostraMessaggio("Hai preso l'oggetto " + nomeAttrezzo);
 	}
 
 	private void posa(String nomeAttrezzo) {
 		Attrezzo a=this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
 		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
 		this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+		Io.mostraMessaggio("Hai posato l'oggetto " + nomeAttrezzo);
+		
+		
 	}
 
 	public static void main(String[] argc) {
