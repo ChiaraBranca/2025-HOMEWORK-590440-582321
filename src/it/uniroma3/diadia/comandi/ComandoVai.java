@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
-<<<<<<< HEAD
+import it.uniroma3.diadia.ambienti.Stanza;
 
 public class ComandoVai implements Comando {
 	private String direzione;
@@ -14,8 +14,6 @@ public class ComandoVai implements Comando {
 	* esecuzione del comando
 	*/
 	@Override
-	public void esegui(Partita partita) {
-	// qui il codice per cambiare stanza ...
 	public void esegui(Partita partita){
 
 		Stanza stanzaCorrente = partita.getLabirinto().getStanzaCorrente(); 
@@ -32,7 +30,7 @@ public class ComandoVai implements Comando {
 		partita.getLabirinto().setStanzaCorrente(prossimaStanza); 
 		System.out.println(partita.getLabirinto().getStanzaCorrente().getNome()); 
 		partita.getGiocatore().setCfu (partita.getGiocatore().getCfu()-1); 
->>>>>>> simo
+
 	}
 
 }
