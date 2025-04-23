@@ -33,9 +33,9 @@ public class DiaDia {
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine","prendi","posa"};
 
 	private Partita partita;
-	private IOConsole Io;
+	private IO Io;
 
-	public DiaDia(IOConsole Io) {
+	public DiaDia(IO Io) {
 		this.Io = Io;
 		this.partita = new Partita();
 	}
@@ -43,7 +43,7 @@ public class DiaDia {
 	public void gioca() {
 		String istruzione; 
 		//Scanner scannerDiLinee;
-
+		
 		Io.mostraMessaggio(MESSAGGIO_BENVENUTO);		
 		do		
 			istruzione = Io.leggiRiga(); 
@@ -56,6 +56,7 @@ public class DiaDia {
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
+	/*
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
 
@@ -77,7 +78,7 @@ public class DiaDia {
 			return true;
 		} else
 			return false;
-	}   
+	}   */
 
 	// implementazioni dei comandi dell'utente:
 
@@ -94,6 +95,7 @@ public class DiaDia {
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
+	/*
 	private void vai(String direzione) {
 		if(direzione==null)
 			Io.mostraMessaggio("Dove vuoi andare ?");
@@ -107,8 +109,8 @@ public class DiaDia {
 			this.partita.getGiocatore().setCfu(cfu--);
 		}
 		Io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
-	} 
-
+	}*/
+	
 	/**
 	 * Comando "Fine".
 	 */
@@ -133,8 +135,8 @@ public class DiaDia {
 	}
 
 	public static void main(String[] argc) {
-		IOConsole Io = new IOConsole();
-		DiaDia gioco = new DiaDia(Io);
-		gioco.gioca();
+		 IO io = new IOConsole();
+		 DiaDia gioco = new DiaDia(io);
+		 gioco.gioca();
 	}
 }
