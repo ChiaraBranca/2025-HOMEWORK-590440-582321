@@ -4,6 +4,8 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 import it.uniroma3.diadia.giocatore.*;
 import it.uniroma3.diadia.attrezzi.*;
+import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.ambienti.*;
 
 /**
@@ -34,6 +36,7 @@ public class DiaDia {
 
 	private Partita partita;
 	private IO Io;
+	private FabbricaDiComandiFisarmonica fabbrica;
 
 	public DiaDia(IO Io) {
 		this.Io = Io;
@@ -56,10 +59,14 @@ public class DiaDia {
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
-	/*
-	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
 
+	private boolean processaIstruzione(String istruzione) {
+		
+		Comando comandoDaEseguire;
+		FabbricaDiComandiFisarmonica fabbrica = new FabbricaDiComandiFisarmonica();
+		comandoDaEseguire = fabbrica.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(partita);
+		/*
 		if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine(); 
 			return true;
@@ -72,13 +79,14 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
 		else
-			Io.mostraMessaggio("Comando sconosciuto");
+			Io.mostraMessaggio("Comando sconosciuto");*/
+		
 		if (this.partita.vinta()) {
 			Io.mostraMessaggio("Hai vinto!");
 			return true;
 		} else
 			return false;
-	}   */
+	} 
 
 	// implementazioni dei comandi dell'utente:
 
