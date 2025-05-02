@@ -63,7 +63,7 @@ public class DiaDia {
 	private boolean processaIstruzione(String istruzione) {
 		
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica fabbrica = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandiFisarmonica fabbrica = new FabbricaDiComandiFisarmonica(this.Io);
 		comandoDaEseguire = fabbrica.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(partita);
 		/*

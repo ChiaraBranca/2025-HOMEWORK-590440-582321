@@ -10,8 +10,8 @@ public class ComandoVai implements Comando {
 	private final static String NOME = "vai";
 	
 
-	public ComandoVai(String direzione) {
-	this.direzione = direzione;
+	public ComandoVai() {
+
 	}
 
 	/**
