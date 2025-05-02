@@ -93,11 +93,12 @@ public class DiaDia {
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
+	/*
 	private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
 			Io.mostraMessaggio(elencoComandi[i]+" ");
 		Io.mostraMessaggio(" ");
-	}
+	}*/
 
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
