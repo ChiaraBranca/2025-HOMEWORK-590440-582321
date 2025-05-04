@@ -13,9 +13,14 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		Attrezzo a=partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
-		partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
-		partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
-		io.mostraMessaggio("Hai posato l'oggetto " + nomeAttrezzo);
+
+	    if(a != null) {
+	    	partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+	        partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);  
+	        io.mostraMessaggio("Hai posato l'oggetto " + nomeAttrezzo);
+	    } else {
+	        io.mostraMessaggio("Non c'e' l'attrezzo nella borsa");
+	    }
 	}
 
 	@Override
