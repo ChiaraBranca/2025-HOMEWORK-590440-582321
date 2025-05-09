@@ -9,13 +9,16 @@ public class ComandoPrendi implements Comando{
 	private String nomeAttrezzo;
 	private final static String NOME = "prendi";
 
-	
+
 	@Override
 	public void esegui(Partita partita) {
 		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
-		partita.getGiocatore().getBorsa().addAttrezzo(a);
-		partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
-		io.mostraMessaggio("Hai preso l'oggetto " + nomeAttrezzo);
+		if(a == null) { io.mostraMessaggio("attrezzo  non presente nella stanza \n");}
+		else {
+			partita.getGiocatore().getBorsa().addAttrezzo(a);
+			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+			io.mostraMessaggio("Hai preso l'oggetto " + nomeAttrezzo);
+		}
 	}
 
 	@Override
@@ -33,7 +36,7 @@ public class ComandoPrendi implements Comando{
 	public void setIO(IO io) {
 		this.io = io;
 	}
-	
+
 	@Override
 	public String getNome() {
 		return NOME;
