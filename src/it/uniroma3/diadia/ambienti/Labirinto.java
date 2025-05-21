@@ -49,7 +49,15 @@ public class Labirinto {
         stanzaCorrente = atrio;  
 		stanzaVincente = biblioteca;
     }
-
+    
+    public static LabirintoBuilder newBuilder() {
+		return new LabirintoBuilder();
+	}
+    
+    public void setStanzaVincente(Stanza stanzaVincente) {
+		this.stanzaVincente = stanzaVincente;
+	}
+    
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}

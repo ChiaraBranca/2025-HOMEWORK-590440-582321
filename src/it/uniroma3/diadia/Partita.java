@@ -1,7 +1,8 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.*;
-import it.uniroma3.diadia.giocatore.*;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Giocatore;
 
 
 /**
@@ -19,6 +20,12 @@ public class Partita {
 	private Labirinto labirinto;
 	
 	public Partita(){
+		this.finita = false;
+		this.labirinto= new Labirinto();
+		this.giocatore= new Giocatore();
+	}
+	public Partita(Labirinto l){
+		this.labirinto=l;
 		this.finita = false;
 		this.labirinto= new Labirinto();
 		this.giocatore= new Giocatore();
