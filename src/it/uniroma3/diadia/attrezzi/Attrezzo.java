@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.attrezzi;
 
+import java.util.Objects;
+
 import it.uniroma3.diadia.ambienti.Stanza;
 
 /**
@@ -50,5 +52,18 @@ public class Attrezzo {
 	public String toString() {
 		return this.getNome()+" ("+this.getPeso()+"kg)";
 	}
+
+	@Override
+	public int hashCode() {
+		return this.getNome().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Attrezzo that = (Attrezzo) obj;
+		return this.getNome().equals(that.getNome());
+	}
+	
+	
 
 }
