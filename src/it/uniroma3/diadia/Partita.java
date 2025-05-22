@@ -19,15 +19,10 @@ public class Partita {
 	private Giocatore giocatore;
 	private Labirinto labirinto;
 	
-	public Partita(){
-		this.finita = false;
-		this.labirinto= new Labirinto();
-		this.giocatore= new Giocatore();
-	}
+
 	public Partita(Labirinto l){
 		this.labirinto=l;
 		this.finita = false;
-		this.labirinto= new Labirinto();
 		this.giocatore= new Giocatore();
 	}
 	
