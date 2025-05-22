@@ -13,7 +13,8 @@ public class StanzaBloccata extends Stanza{
 	
 	@Override
 	public Stanza getStanzaAdiacente(String direzione) {
-		if(direzione_Bloccata.equals(direzione)&& this.hasAttrezzo(chiave)) {
+		if (direzione_Bloccata.equals(direzione) && !this.hasAttrezzo(chiave)) {
+			// Direzione bloccata e chiave mancante: non si può passare
 			return this;
 		}
 		return super.getStanzaAdiacente(direzione);
@@ -21,10 +22,9 @@ public class StanzaBloccata extends Stanza{
 	
 	@Override
 	public String getDescrizione() {
-		String Bloccato = "Questa stanza ha la direzione: " + direzione_Bloccata +"\n bloccata, per sblocarla usa: " + chiave + "\n e posalo nella stanza.";
-		
-		if(!this.hasAttrezzo(chiave)){
-			return Bloccato;
+		if (!this.hasAttrezzo(chiave)) {
+			return "Stanza bloccata nella direzione: " + direzione_Bloccata +
+			       "\nPrendi il " + chiave + " e posalo nella stanza";
 		}
 		return super.getDescrizione();
 	}
