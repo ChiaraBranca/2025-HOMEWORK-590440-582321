@@ -16,7 +16,7 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 		Scanner scannerDiParole = new Scanner(istruzione);
 		String nomeComando = null;
 		String parametro = null;
-		Comando comando = null;
+		AbstractComando comando = null;
 
 		if (scannerDiParole.hasNext())
 			nomeComando = scannerDiParole.next();// prima parola:   nome del comando
@@ -36,7 +36,13 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 			comando = new ComandoFine();
 		else if (nomeComando.equals("guarda"))
 			comando = new ComandoGuarda();
+		else if (nomeComando.equals("interagisci"))
+			comando = new ComandoInteragisci();
+		else if (nomeComando.equals("saluta"))
+			comando = new ComandoSaluta();
+		
 		else comando = new ComandoNonValido();
+		
 		comando.setParametro(parametro);
 		comando.setIO(this.io);
 		return comando;

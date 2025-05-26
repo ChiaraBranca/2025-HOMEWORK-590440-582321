@@ -4,8 +4,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
-public class ComandoPosa implements Comando {
-	private IO io;
+public class ComandoPosa extends AbstractComando {
 	private String nomeAttrezzo;
 	private final static String NOME = "posa";
 
@@ -17,9 +16,9 @@ public class ComandoPosa implements Comando {
 	    if(a != null) {
 	    	partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
 	        partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);  
-	        io.mostraMessaggio("Hai posato l'oggetto " + nomeAttrezzo);
+	        getIo().mostraMessaggio("Hai posato l'oggetto " + nomeAttrezzo);
 	    } else {
-	        io.mostraMessaggio("Non c'e' l'attrezzo nella borsa");
+	        getIo().mostraMessaggio("Non c'e' l'attrezzo nella borsa");
 	    }
 	}
 
@@ -32,11 +31,6 @@ public class ComandoPosa implements Comando {
 	@Override
 	public String getParametro() {
 		return this.nomeAttrezzo;
-	}
-
-	@Override
-	public void setIO(IO io) {
-		this.io = io;
 	}
 
 	@Override
