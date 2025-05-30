@@ -2,8 +2,6 @@ package it.uniroma3.diadia;
 
 
 import java.util.Scanner;
-import it.uniroma3.diadia.giocatore.*;
-import it.uniroma3.diadia.attrezzi.*;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.ambienti.*;
@@ -32,15 +30,10 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine","prendi","posa"};
-
 	private Partita partita;
 	private IO Io;
-	private FabbricaDiComandiFisarmonica fabbrica;
-	private Labirinto labirinto;
-
+	
 	public DiaDia(Labirinto labirinto,IO Io) {
-		this.labirinto=labirinto;
 		this.Io = Io;
 		this.partita = new Partita(labirinto);
 	}
@@ -145,14 +138,17 @@ public class DiaDia {
 		
 	}*/
 
-	public static void main(String[] argc) {
+	public static void main(String[] argc) throws Exception {
 		 /*IO io = new IOConsole();
 		 DiaDia gioco = new DiaDia(io);
 		 gioco.gioca();*/
 		/* N.B. unica istanza di IOConsole
 		di cui sia ammessa la creazione */
-		IO io = new IOConsole();
-		Labirinto labirinto = new LabirintoBuilder()
+		Scanner scanner = new Scanner(System.in);
+		IO io = new IOConsole(scanner);
+		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+		
+		/*
 										.addStanzaIniziale("Atrio")
 										.addAttrezzo("martello", 3)
 										.addStanza("Aula N11")
@@ -172,8 +168,8 @@ public class DiaDia {
 										.addAdiacenza("Laboratorio Campus", "Atrio", "est")
 										.addAdiacenza("Laboratorio Campus", "Aula N11", "ovest")
 										.addAdiacenza("Biblioteca", "Atrio", "sud")
-									
 										.getLabirinto();
+										*/
 		DiaDia gioco = new DiaDia(labirinto,io);
 		gioco.gioca();
 	}
