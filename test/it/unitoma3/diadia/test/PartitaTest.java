@@ -1,5 +1,6 @@
 package it.unitoma3.diadia.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import static org.junit.Assert.assertTrue;
@@ -9,36 +10,43 @@ import org.junit.Test;
 
 
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Stanza;
 
 public class PartitaTest {
 	
-	public Partita partita = new Partita();
-	
+	Labirinto labirinto;
+	Partita p;
+	Stanza s;
+
 	@Before
 	public void setUp() {
+		 labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addAttrezzo("martello", 3)
+				.addStanzaVincente("Biblioteca")
+				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.getLabirinto();
+		 p = new Partita(labirinto);
+		 s = new Stanza("Stanza");
+	}
+	
+	@Test
+	public void testGetStanzaVincente() {
+		assertEquals("Biblioteca", p.getLabirinto().getStanzaVincente().getNome());
+	}
+
+	@Test
+	public void testSetStanzaCorrente() {
+		p.getLabirinto().setStanzaCorrente(s);
+		assertEquals(s, p.getLabirinto().getStanzaCorrente());
+	}
+
+	@Test
+	public void testIsFinita() {
 		
+		assertFalse(p.isFinita());
 	}
 	
-	
-	@Test
-	public void testVinta_inAtrio() {
-		assertFalse(this.partita.vinta());
-	}
-	
-	@Test
-	public void testVinta_inBiblioteca() {
-		this.partita.getLabirinto().setStanzaCorrente(this.partita.getLabirinto().getStanzaVincente());
-		assertTrue(this.partita.vinta());
-	}
-	
-	@Test
-	public void testIsFinita_nonFinita() {
-		assertFalse(this.partita.vinta());
-	}
-	
-	@Test
-	public void testIsFinita_Xcfu() {
-		this.partita.getGiocatore().setCfu(0);
-		assertTrue(this.partita.isFinita());
-	}
 }

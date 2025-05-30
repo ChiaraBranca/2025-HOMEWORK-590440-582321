@@ -7,7 +7,6 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Strega extends AbstractPersonaggio {
-
 	private static final String MESSAGGIO_SALUTATA = "Solo perche' mi hai salutato, non ti mando in uno scantinato!";
 	private static final String MESSAGGIO_NON_SALUTATA = "Sei proprio una brutta persona, vai nella stanza con meno attrezzi!";
 
@@ -18,7 +17,7 @@ public class Strega extends AbstractPersonaggio {
 	@Override
 	public String agisci(Partita partita) {
 		String msg;
-		List<Stanza> stanzeAdiacenti = partita.getStanzaCorrente().getStanzeAdiacenti();
+		List<Stanza> stanzeAdiacenti = partita.getLabirinto().getStanzaCorrente().getStanzeAdiacenti();
 
 		Stanza maxAtrezzi = stanzeAdiacenti.get(0);
 		Stanza minAtrezzi = stanzeAdiacenti.get(0);
@@ -33,10 +32,10 @@ public class Strega extends AbstractPersonaggio {
 		}
 
 		if(this.haSalutato()) {
-			partita.setStanzaCorrente(maxAtrezzi);
+			partita.getLabirinto().setStanzaCorrente(maxAtrezzi);
 			msg = MESSAGGIO_SALUTATA;
 		} else {
-			partita.setStanzaCorrente(minAtrezzi);
+			partita.getLabirinto().setStanzaCorrente(minAtrezzi);
 			msg = MESSAGGIO_NON_SALUTATA;
 		}
 
