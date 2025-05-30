@@ -38,9 +38,9 @@ public class DiaDia {
 	private IO Io;
 	private FabbricaDiComandiFisarmonica fabbrica;
 
-	public DiaDia(IO Io) {
+	public DiaDia(IO Io, Labirinto labirinto) {
 		this.Io = Io;
-		this.partita = new Partita();
+		this.partita = new Partita(labirinto);
 	}
 
 	public void gioca() {
@@ -143,9 +143,12 @@ public class DiaDia {
 		
 	}*/
 
-	public static void main(String[] argc) {
-		 IO io = new IOConsole();
-		 DiaDia gioco = new DiaDia(io);
-		 gioco.gioca();
+	public static void main(String[] argc) throws Exception {
+		Scanner scanner = new Scanner(System.in);
+		IO console = new IOConsole(scanner);
+		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+		DiaDia gioco = new DiaDia(console, labirinto);
+		gioco.gioca();
+		scanner.close();
 	}
 }

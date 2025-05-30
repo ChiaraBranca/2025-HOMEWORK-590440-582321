@@ -6,7 +6,7 @@ import java.util.Map;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class LabirintoBuilder {
-
+/*
 	private Labirinto labirinto;
 	private Stanza ultimaStanzaAggiunta;
 	private Map<String, Stanza> nome2stanza;
@@ -81,4 +81,5 @@ public class LabirintoBuilder {
 		this.ultimaStanzaAggiunta = stanza;
 		this.nome2stanza.put(stanza.getNome(), stanza);
 	}
+*/
 }
