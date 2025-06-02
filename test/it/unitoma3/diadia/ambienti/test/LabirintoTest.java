@@ -1,27 +1,32 @@
 package it.unitoma3.diadia.ambienti.test;
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 
+import java.io.FileNotFoundException;
+
+import it.uniroma3.diadia.FormatoFileNonValidoException;
+
 public class LabirintoTest {
 
-   
 	Labirinto l;
 	Stanza biblioteca;
 	Stanza DS1;
 
 	@Before
-	public void setUp() {
-		l = Labirinto.newBuilder()
-				.addStanzaIniziale("Atrio")
-				.addAttrezzo("martello", 3)
-				.addStanzaVincente("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
-				.getLabirinto();
+	public void setUp() throws FileNotFoundException, FormatoFileNonValidoException {
+		 l = Labirinto.newBuilder("labirinto2.txt").getLabirinto();
+//				Labirinto.newBuilder()
+//				.addStanzaIniziale("Atrio")
+//				.addAttrezzo("martello", 3)
+//				.addStanzaVincente("Biblioteca")
+//				.addAdiacenza("Atrio", "Biblioteca", "nord")
+//				.getLabirinto();
 		
 		biblioteca = new Stanza("Biblioteca");
 		DS1 = new Stanza("DS1");

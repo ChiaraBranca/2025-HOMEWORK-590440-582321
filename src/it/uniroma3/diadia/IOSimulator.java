@@ -16,6 +16,7 @@ public class IOSimulator implements IO {
 		this.messaggiProdotti = messaggiProdotti;
 	}
 
+	//forse si potrebbe inserire una mappa al posto della lista per ricordare ogni riga letta quale messaggi abbia prodotto
 	private List<String> messaggiProdotti;
 	private int indiceMessaggiProdotti;
 	private int indiceMessaggiMostrati;
@@ -28,23 +29,21 @@ public class IOSimulator implements IO {
 	}
 
 	@Override
-	public String leggiRiga() { 
-		String riga = null;
-
-		riga = this.righeLette.get(indiceRigheLette);
+	public String leggiRiga() {
+		if (indiceRigheLette >= righeLette.size()) {
+			throw new IllegalStateException("Tentativo di leggere oltre le righe disponibili.");
+		}
+		String riga = this.righeLette.get(indiceRigheLette);
 		this.indiceRigheLette++;
 		return riga;
 	}
+
 
 	@Override
 	public void mostraMessaggio(String msg) {
 		this.messaggiProdotti.add(this.indiceMessaggiProdotti, msg);
 		this.indiceMessaggiProdotti++;
 	}
-
-	//	public String[] getRigheMostrate() {
-	//		return righeMostrate;
-	//	}
 
 	public String nextMessaggio() {
 		String next = this.messaggiProdotti.get(indiceMessaggiMostrati);
@@ -55,5 +54,4 @@ public class IOSimulator implements IO {
 	public boolean hasNextMessaggio() {
 		return this.indiceMessaggiMostrati < this.indiceMessaggiProdotti;
 	}
-
 }
